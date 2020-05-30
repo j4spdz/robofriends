@@ -5,22 +5,21 @@ import CardList from "../components/CardList";
 import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
 import ErrorBoundary from "../components/ErrorBoundry";
-import Header from "../components/Header";
 
 import "./App.css";
 
 import { setSearchField, requestRobots } from "../actions";
 
+// parameter state comes from index.js provider store state(rootReducers)
 const mapStateToProps = (state) => {
   return {
     searchField: state.searchRobots.searchField, //come from reducer
     robots: state.requestRobots.robots,
     isPending: state.requestRobots.isPending,
-    error: state.requestRobots.error,
   };
 };
 
-//dispatch is what triggers an action to reducer
+// parameter state comes from index.js provider store state(rootReducers)
 const mapDispatchToProps = (dispatch) => {
   return {
     onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
@@ -40,7 +39,7 @@ class App extends Component {
     });
     return (
       <div className="tc">
-        <Header />
+        <h1 className="f1">RoboFriends</h1>
         <SearchBox searchChange={onSearchChange} />
         <Scroll>
           { isPending ? <h1>Loading</h1> :
